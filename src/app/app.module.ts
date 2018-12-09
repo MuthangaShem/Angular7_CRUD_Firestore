@@ -6,11 +6,13 @@ import { AngularFirestoreModule } from '@angular/fire/firestore'
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { EmployeesComponent } from './employees/employees.component';
+import { EmployeeComponent } from './employees/employee/employee.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeesComponent
+    EmployeesComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,
