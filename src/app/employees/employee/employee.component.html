@@ -1,3 +1,21 @@
-<p>
-Employee works!
-</p>
+<h1 class="display-4"> </h1>
+<form #form="ngForm" autocomplete="off">
+	<div class="form-group">
+		<input name="fullName" #fullName="ngModel" [(ngModel)]="service.formData.fullName" class="form-control" placeholder="Full Name" required="">
+	</div>
+	<div class="form-group">
+		<input name="position" #fullName="ngModel" [(ngModel)]="service.formData.position" class="form-control" placeholder="Position">
+	</div>
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<input name="empCode" #fullName="ngModel" [(ngModel)]="service.formData.empCode" class="form-control" placeholder="Emp. Code">
+		</div>
+		<div class="form-group col-md-6">
+			<input name="mobile" #fullName="ngModel" [(ngModel)]="service.formData.mobile" class="form-control" placeholder="Mobile Number">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<button type="submit" class="btn btn-lg btn-block btn-info">SUBMIT</button>
+	</div>
+</form>
