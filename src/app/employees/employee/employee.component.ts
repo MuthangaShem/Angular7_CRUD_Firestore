@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../shared/employee.service';
 import { NgForm } from '@angular/forms';
+import { AngularFirestore} from '@angular/fire/firestore'
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-employee',
@@ -9,7 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class EmployeeComponent implements OnInit {
 
-  constructor(private service: EmployeeService) { }
+  constructor(private toastr: ToastrService, private service: EmployeeService, private firestore: AngularFirestore) { }
 
   ngOnInit() {
   	this.resetForm();
@@ -26,5 +28,15 @@ export class EmployeeComponent implements OnInit {
   		empCode: '',
   		mobile: ''
   	}
+  }
+  onSubmit(form:NgForm){
+  	let data = Object.assign({}, form.value);
+  	delete data.id;
+  	if (form.value.id == null)
+  		this.firestore.collection('employees').add(data);
+  	else
+  		this.firestore.doc('employees/' + form.value.id).update(data)
+  	this.resetForm();	
+  	this.toastr.success('Record Submitted Successfully', 'EMP Register')
   }
 }
